@@ -14,19 +14,19 @@ export interface AuthorEntity extends defaultClasses.Base{}
 
 export class AuthorEntity extends defaultClasses.TimeStamps implements Author {
   @prop({required: true, default: ''})
-  public username = '';
+  public username: string;
 
   @prop({ unique: true, required: true })
-  public email = '';
+  public email: string;
 
   @prop({ required: false, default: ''})
-  public avatarPath = '';
+  public avatarPath: string;
 
   @prop({required: true, default: ''})
   private password?: string;
 
   @prop({required: true, default: ''})
-  public isPro = false;
+  public isPro: boolean;
 
   constructor(authorData: Author) {
     super();
@@ -34,6 +34,7 @@ export class AuthorEntity extends defaultClasses.TimeStamps implements Author {
     this.email = authorData.email;
     this.avatarPath = authorData.avatarPath;
     this.username = authorData.username;
+    this.isPro = authorData.isPro;
   }
 
   public setPassword(password: string, salt: string) {

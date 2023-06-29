@@ -1,7 +1,7 @@
 import { Container } from 'inversify';
 import { types } from '@typegoose/typegoose';
 import { AuthorServiceInterface } from './author-service.interface.js';
-import { AppComponent } from '../../types/app-component.enum';
+import { AppComponent } from '../../types/app-component.enum.js';
 import AuthorService from './author.service.js';
 import { AuthorEntity, AuthorModel } from './author.entity.js';
 

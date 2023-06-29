@@ -3,7 +3,7 @@ import { Container } from 'inversify';
 import RestApplication from './rest.js'; // приложение связи с REST API
 import { RestSchema } from '../core/config/rest.schema.js'; // схема работы с БД
 
-import { AppComponent } from '../types/app-component.enum'; // тип для appcomponent
+import { AppComponent } from '../types/app-component.enum.js'; // тип для appcomponent
 
 import { LoggerInterface } from '../core/logger/logger.interface.js';
 import PinoService from '../core/logger/pino.service.js';
@@ -11,8 +11,8 @@ import PinoService from '../core/logger/pino.service.js';
 import { ConfigInterface } from '../core/config/config.interface.js';
 import ConfigService from '../core/config/config.service.js'; // чтение конфига
 
-import { DatabaseClientInterface } from '../core/database-client/database-client.interface';
-import MongoClientService from '../core/database-client/mongo-client.service';
+import { DatabaseClientInterface } from '../core/database-client/database-client.interface.js';
+import MongoClientService from '../core/database-client/mongo-client.service.js';
 
 export function createRestApplicationContainer() {
   const restApplicationContainer = new Container();

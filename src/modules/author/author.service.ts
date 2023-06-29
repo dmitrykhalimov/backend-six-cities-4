@@ -6,6 +6,7 @@ import CreateAuthorDto from './dto/create-author.dto.js';
 import { AuthorServiceInterface} from './author-service.interface';
 import { AppComponent } from '../../types/app-component.enum.js';
 import { LoggerInterface } from '../../core/logger/logger.interface.js';
+import UpdateAuthorDto from './dto/update-author.dto.js';
 
 @injectable()
 export default class AuthorService implements AuthorServiceInterface {
@@ -29,12 +30,18 @@ export default class AuthorService implements AuthorServiceInterface {
   }
 
   public async findOrCreate(dto: CreateAuthorDto, salt: string): Promise<DocumentType<AuthorEntity>> {
-    const existedUser = await this.findByEmail(dto.email);
+    const existedAuthor = await this.findByEmail(dto.email);
 
-    if (existedUser) {
-      return existedUser;
+    if (existedAuthor) {
+      return existedAuthor;
     }
 
     return this.create(dto, salt);
+  }
+
+  public async updateById(authorId: string, dto: UpdateAuthorDto): Promise<DocumentType<AuthorEntity> | null> {
+    return this.authorModel
+      .findByIdAndUpdate(authorId, dto, {new: true})
+      .exec();
   }
 }

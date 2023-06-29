@@ -1,5 +1,4 @@
 import typegoose, {defaultClasses, getModelForClass, Ref} from '@typegoose/typegoose';
-import { City } from '../../types/city.enum.js';
 import { Flat } from '../../types/flat.enum.js';
 import { Features } from '../../types/features.enum.js';
 import { Location } from '../../types/location.type.js';
@@ -25,17 +24,14 @@ export class OfferEntity extends defaultClasses.TimeStamps {
   @prop({ required: true })
   public offerDate!: Date;
 
-  @prop({ 
-    type: () => String,
-    enum: City
-  })
-  public city!: City
+  @prop()
+  public city!: string;
 
   @prop()
   public preview!: string;
 
   @prop()
-  public photos!: string[];
+  public photos?: string[];
 
   @prop()
   public isPremium!: boolean;

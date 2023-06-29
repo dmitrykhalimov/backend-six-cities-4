@@ -1,5 +1,4 @@
 import { Offer } from '../../types/offer.type.js';
-import { City } from '../../types/city.enum.js';
 import { Flat } from '../../types/flat.enum.js';
 import { Features } from '../../types/features.enum.js';
 
@@ -19,8 +18,8 @@ export function createOffer(offerData: string): Offer {
     guests,
     price,
     features,
-    firstname,
-    lastname,
+    username,
+    isPro,
     email,
     avatarPath,
     latitude,
@@ -29,16 +28,16 @@ export function createOffer(offerData: string): Offer {
 
   const author = {
     email,
-    firstname,
-    lastname,
-    avatarPath
+    username,
+    avatarPath,
+    isPro: Boolean(isPro),
   };
 
   return {
     title,
     description,
     offerDate: new Date(offerDate),
-    city: City[city as 'Paris' | 'Cologne' | 'Brussels' | 'Amsterdam' | 'Hamburg' | 'Dusseldorf'],
+    city,
     preview,
     photos: photos.split(';'),
     isPremium: Boolean(isPremium),
